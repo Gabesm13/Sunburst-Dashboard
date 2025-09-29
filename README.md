@@ -6,6 +6,7 @@ Generates an interactive HTML dashboard with a 6-level sunburst of user/navigati
 
 ## Screenshot
 A preview of the generated dashboard (synthetic data):
+![Sunburst Dashboard preview](assets/sunburst.png)
 
 After running the steps below, the full interactive HTML will be created at outputs/sunburst.html and can be opened in your browser.
 
