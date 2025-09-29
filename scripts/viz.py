@@ -273,7 +273,39 @@ def main():
     # 4. Create figure and export
     fig = create_figure(sb_df, bar_df)
     outpath = outputs_dir / "sunburst.html"
-    fig.write_html(outpath)
+    inner = fig.to_html(full_html=False, include_plotlyjs="cdn")
+
+    html = f"""<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Sunburst Dashboard</title>
+      <style>
+        /* Scale the entire Plotly document down to 50% */
+        .zoom-wrap {{
+          transform: scale(0.5);
+          transform-origin: top left;
+          /* optional: allow scrolling if scaled content overflows */
+          width: {int(fig.layout.width)}px;
+          height: {int(fig.layout.height)}px;
+        }}
+        body {{
+          margin: 0;
+          overflow: auto;
+          background: #fff;
+        }}
+      </style>
+    </head>
+    <body>
+      <div class="zoom-wrap">
+        {inner}
+      </div>
+    </body>
+    </html>
+    """
+
+    outpath.write_text(html, encoding="utf-8")
     print(f"✓ Sunburst dashboard written to {outpath}")
 
 
