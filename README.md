@@ -23,3 +23,9 @@ python scripts/viz.py
 
 # 4) Open in your browser (macOS)
 open outputs/sunburst.html
+
+Notes:
+All numbers are synthetic and for demonstration only.
+
+License:
+MIT
